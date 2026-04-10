@@ -42,8 +42,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'chown -R 111:113 "/.npm" || true'
-                sh 'npm cache clean --force || true'
+                sh 'mkdir /.npm'
+                sh 'chown -R 111:113 "/.npm"'
                 sh 'npm install'
                 sh 'npm ci'
                 sh 'npm run build'
