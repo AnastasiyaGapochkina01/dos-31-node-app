@@ -42,8 +42,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'mkdir /.npm'
-                sh 'chown -R 111:113 "/.npm"'
+                //sh 'mkdir /.npm'
+                //sh 'chown -R 111:113 "/.npm"'
+                sh 'export npm_config_cache=/.'
                 sh 'npm install'
                 sh 'npm ci'
                 sh 'npm run build'
