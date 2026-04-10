@@ -59,7 +59,7 @@ pipeline {
                script {
                 sshCommand remote: remote, command: """
                     set -ex
-                    sudo rsync -av --delete -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i remote.identity" dist/ "${env.HOST}:${env.DIR}"
+                    sudo rsync -av --delete -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i "${private_key}"" dist/ "jenkins@${env.HOST}:${env.DIR}"
                     
                 """
                }
