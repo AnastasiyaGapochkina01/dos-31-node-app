@@ -42,7 +42,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm cache clean --force'
+                sh 'sudo chown -R 111:113 "/.npm"'
                 sh 'npm install'
                 sh 'npm ci'
                 sh 'npm run build'
