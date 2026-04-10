@@ -11,7 +11,7 @@ pipeline {
         PRJ = "node-app"
         DIR = "/home/${params.USER}/www/$PRJ"
         HOST = "44.221.46.188"
-        URL = "git@github.com:AnastasiyaGapochkina01/dos-31-node-app.git"
+        GIT_URL = "git@github.com:AnastasiyaGapochkina01/dos-31-node-app.git"
     }
 
     stages {
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Checkout branch') {
             steps {
-                git branch: "${params.REVISON}", credentialsId: 'jenkins-key', url: $URL
+                git branch: "${params.REVISON}", credentialsId: 'jenkins-key', url: ${env.GIT_URL}
             }
         }
 
