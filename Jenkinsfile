@@ -56,12 +56,11 @@ pipeline {
 
         stage('Release') {
             steps {
-               script {
-                sshCommand remote: remote, command: """
+               withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-key', usernameVariable: 'username', keyFileVariable: 'private_key')]) {
+                 sh """
                     set -ex
-                    rsync -av --delete -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" dist/ "jenkins@${env.HOST}:${env.DIR}"
-                    
-                """
+                    rsync -av --delete -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i 'private_key'" dist/ "jenkins@${env.HOST}:${env.DIR}"
+                 """
                }
             }
         }
