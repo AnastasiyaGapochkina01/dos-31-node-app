@@ -42,7 +42,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'chown -R 111:113 "/.npm"'
+                sh 'chown -R 111:113 "/.npm" || true'
                 sh 'npm install'
                 sh 'npm ci'
                 sh 'npm run build'
