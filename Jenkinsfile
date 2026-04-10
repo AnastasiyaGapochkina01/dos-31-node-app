@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Checkout branch') {
             steps {
-                git branch: "${params.REVISON}", credentialsId: 'jenkins-key', url: ${env.GIT_URL}
+                git branch: "${params.REVISON}", credentialsId: 'jenkins-key', url: "${env.GIT_URL}"
             }
         }
 
