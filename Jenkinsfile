@@ -42,7 +42,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'sudo chown -R 111:113 "/.npm"'
+                sh 'chown -R 111:113 "/.npm"'
                 sh 'npm install'
                 sh 'npm ci'
                 sh 'npm run build'
